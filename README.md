@@ -1,11 +1,70 @@
-# Tonight
+# Getting Started with Create React App
 
-Tonight is a web application aimed at astrophotographers and casual stargazers alike who wish to view or take pictures of celestial bodies. Users can register with and log in to the service in order to receive a personalized curated catalog that forecasts visible objects for the upcoming evening. Selections within the catalog can be individually opened up in order to display more details and indicate where they can be seen. Users can also view a history page which will allow them to retrieve recently viewed objects or ease or add their favorite objects they want to keep track of to a bookmarks section. The system will suggest the more easily viewable and brightest objects by default and feature a “picture of the day” to engage new users. More advanced users will be able to query specific objects using provided filters, such as type and visible distances including naked eye and telescope.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-In addition to merely viewing celestial bodies, the catalog can also be used to learn more about their properties, display photographs, or may even include other viewable objects in space such as man-made satellites. These features will be useful to students in particular, who can look up details and can get interested in astronomy and astrophysics.
+## Available Scripts
 
-The celestial objects catalog’s features will be powered by a variety of APIs. It will primarily utilize the user’s IP address, collected by geolocation, to compute additional visibility constraints such as seasons and weather. In order to provide a smooth and seamless personalized experience while constructing the list, additional influencing factors such as the path and orientation of individual objects, light pollution and the date and current location of the Earth relative to the user will all be accounted for using NASA Open APIs. The Open API will also provide the framework required to display the picture of the day.
+In the project directory, you can run:
 
-Currently, almost every website/app providing this service is very technical. Users need to have previous knowledge about telescopes, mounts and space objects to use them. As a result, it can be quite difficult for people who are getting started or getting involved on a more casual level. Many of the simpler applications also do not provide enough detail about the celestial objects themselves, which may hinder user engagement. Our vision is to make a more intuitive version of these services which does not require any previous experience, while maintaining power and functionality. To this end, we provide a demonstration of our UI, available here: (https://www.figma.com/proto/qfExzzqcNaaQiehVctJ3R1/Untitled?node-id=2%3A2&scaling=contain&page-id=0%3A1&starting-point-node-id=2%3A2)
+### `npm start`
 
-Our team believes that topics relating to astronomy and our universe do not see nearly enough exposure. By breaking the technical barrier to entry, we believe our app will help in promoting the wonders of astronomy to a larger audience.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
