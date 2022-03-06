@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 * {
-  font-family: sans-serif;
+  font-family: "Poppins", sans-serif;
   padding: 0px;
   margin: 0px;
+  box-sizing: border-box;
 }
 
 .center-content {
@@ -10,9 +13,100 @@
   align-items: center;
 }
 
-.outer-div {
-  width: 100%;
-  height: 100vh;
+.background-white {
   background-color: white;
+}
+
+.page-width {
+  width: 100vw;
+}
+
+.page-height {
+  height: 100vh;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+input {
+  border: 1px solid rgb(233, 233, 233);
+  outline: none;
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  font-size: 1em;
+  background-color: rgb(250, 250, 250);
   
 }
+
+label {
+  font-size: 0.9em;
+  display: block;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.button {
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 1em;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.background-blue {
+  background-color: #1f34e9;
+}
+
+.form-wrapper {
+  width: 100%;
+  text-align: left;
+  padding: 20px 0px;
+  margin-bottom: 30px;
+}
+
+/* Text styling */
+.text-white {
+  color: white;
+}
+
+.text-blue {
+  color: #1f34e9;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.text-semi-bold {
+  font-weight: 500;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+.link:hover .fa-arrow-right{
+  cursor: pointer;
+  transform: translateX(5px);
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-left {
+  text-align: left;
+}
+

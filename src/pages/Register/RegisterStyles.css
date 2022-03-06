@@ -1,0 +1,24 @@
+.register-wrapper {
+  width: 400px;
+}
+
+#register-email {
+  width: 64%;
+  float: left;
+  margin-right: 10px;
+}
+
+#register-username {
+  width: 33%;
+}
+
+.register-validation-msg {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  transform: translateY(-10px);
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
