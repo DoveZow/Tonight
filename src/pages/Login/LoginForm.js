@@ -1,8 +1,10 @@
 import React from "react";
-
+import { useRef, useState, useEffect } from 'react';
 const LoginForm = () => {
+  //march 5 18:26-----------------------------------------
   // type code here for login validation
-
+  const userRef = useRef();
+  const errRef = useRef();
 
   return (
     <div className="form-wrapper">

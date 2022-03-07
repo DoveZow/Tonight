@@ -17,6 +17,7 @@
 
 .auth-container {
   background-image: url("../../images/login-background.jpg");
+  background-size: auto;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
