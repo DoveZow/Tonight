@@ -1,28 +1,22 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import RegisterForm from "./RegisterForm";
-import "../Register/RegisterStyles.css";
-
-// for icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import ResetPassForm from "./ResetPassForm";
+import "./ResetPass.css";
 
-const Register = () => {
+const ResetPass = () => {
   let navigate = useNavigate();
-
   return (
     <div className="auth-container center-content page-width page-height">
       <div className="card auth-card center-content">
         <section className="auth-credentials background-white center-content">
           <div className="auth-section-wrapper register-wrapper">
-            <h2 className="text-align-left"> Create an account</h2>
-            <RegisterForm />
+            <h2 className="text-align-left"> Reset password</h2>
+            <ResetPassForm />
             <p className="text-bold text-align-right">
-              Already registered?{" "}
-              <span
-                className="link text-blue"
-                onClick={() => navigate("/")}
-              >
+              Remembered?{" "}
+              <span className="link text-blue" onClick={() => navigate("/")}>
                 Login now
                 {/* Arrow icon */}
                 <FontAwesomeIcon
@@ -38,4 +32,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default ResetPass;

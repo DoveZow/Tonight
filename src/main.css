@@ -40,7 +40,6 @@ input {
   margin-top: 5px;
   font-size: 1em;
   background-color: rgb(250, 250, 250);
-  
 }
 
 label {
@@ -97,7 +96,7 @@ button:hover {
   cursor: pointer;
 }
 
-.link:hover .fa-arrow-right{
+.link:hover .fa-arrow-right {
   cursor: pointer;
   transform: translateX(5px);
 }
@@ -109,4 +108,3 @@ button:hover {
 .text-align-left {
   text-align: left;
 }
-

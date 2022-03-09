@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwtGenerator = require("./utils/jwtGenerator");
+const authorizeUser = require("../server/middleware/authorizeUser");
 
 app.use(cors());
 app.use(express.json());
@@ -61,10 +62,66 @@ app.post("/createaccount", async (req, res) => {
 // login
 app.post("/login", async (req, res) => {
   try {
+    const { loginUsername, loginPassword } = req.body;
 
+    const user = await pool.query(
+      `SELECT * FROM users WHERE uname ='${loginUsername}'`
+    );
 
-    // type code here
+    if (user.rows.length === 0) {
+      return res.status(401).send("Username or Password is incorrect");
+    }
 
+    const checkPassword = await bcrypt.compare(
+      loginPassword,
+      user.rows[0].upass
+    );
+
+    if (!checkPassword) {
+      return res.status(401).json("Username or password is incorrect");
+    }
+
+    const token = jwtGenerator(user.rows[0].uid);
+    res.json({ token });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+app.post("/verified", authorizeUser, async (req, res) => {
+  try {
+    res.json(true);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+app.post("/", authorizeUser, async (req, res) => {
+  try {
+    const user = await pool.query(
+      `SELECT * FROM users WHERE uid = '${req.user}'`
+    );
+
+    res.json(user.rows[0]);
+    // res.json(req.user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+app.post("/changepass", async (req, res) => {
+  try {
+    const { confirmNewPassword, toEmail } = req.body;
+    const saltRound = 10;
+    const salt = await bcrypt.genSalt(saltRound);
+    const bcryptPass = await bcrypt.hash(confirmNewPassword, salt);
+
+    const newPass = await pool.query(
+      `UPDATE users SET upass = '${bcryptPass}' WHERE uemail = '${toEmail}'`
+    );
 
   } catch (err) {
     console.error(err.message);

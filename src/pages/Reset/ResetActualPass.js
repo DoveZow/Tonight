@@ -1,0 +1,61 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
+const ResetActualPass = ({
+  toEmail,
+  isResetPassInputShown,
+  setIsResetPassInputShown
+}) => {
+  if (!isResetPassInputShown) {
+    return null;
+  }
+  let navigate = useNavigate();
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+
+  const resetPassword = async (e) => {
+    e.preventDefault();
+    if (confirmNewPassword === newPassword) {
+      toast.success("Password changed successfully.");
+      navigate("/");
+      setIsResetPassInputShown(false);
+      try {
+        const body = { confirmNewPassword, toEmail };
+        await fetch("http://localhost:3002/changepass", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        });
+      } catch (err) {
+        console.error(err.message);
+        toast.error("Error.");
+      }
+    } else {
+      toast.error("Passwords don't match.");
+    }
+  };
+
+  return (
+    <form>
+      <input
+        type="text"
+        placeholder="New password"
+        onChange={(e) => setNewPassword(e.target.value)}
+      ></input>
+      <input
+        type="text"
+        placeholder="Re-type new password"
+        onChange={(e) => setConfirmNewPassword(e.target.value)}
+      ></input>
+      <button
+        onClick={resetPassword}
+        className="button auth-button width-100 background-blue text-white text-bold"
+      >
+        Reset Password
+      </button>
+    </form>
+  );
+};
+
+export default ResetActualPass;

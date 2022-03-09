@@ -11,16 +11,17 @@ import illustration from "../../images/login-illustration.svg";
 // import components
 import LoginForm from "./LoginForm";
 
-const Login = () => {
-  let navigate = useNavigate();
+const Login = ({ setIsAuthenticated, isAuthenticated }) => {
 
+
+  let navigate = useNavigate();
   return (
     <div className="auth-container center-content page-width page-height">
       <div className="card auth-card center-content">
         <section className="auth-credentials background-white center-content">
           <div className="auth-section-wrapper">
             <img className="auth-logo" src={logo} alt="logo" />
-            <LoginForm />
+            <LoginForm setIsAuthenticated={setIsAuthenticated} />
             <p className="link text-bold text-align-right">
               Not registered yet?{" "}
               <span className="text-blue" onClick={() => navigate("/register")}>
