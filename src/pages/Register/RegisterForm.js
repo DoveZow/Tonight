@@ -1,21 +1,21 @@
 import React, { useState, useRef } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Alert } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 
 const RegisterForm = () => {
-
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const usernameRef = useRef()
   const { signup } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  let navigate = useNavigate()
 
   async function handleSubmit(e){
     e.preventDefault()
     //error checking before signup
-    if (passwordRef.current.value != passwordConfirmRef.current.value)
+    if (passwordRef.current.value !== passwordConfirmRef.current.value)
     {
       return setError("Passwords do not match")
     }
@@ -24,10 +24,10 @@ const RegisterForm = () => {
       setError("")
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
+      navigate("/")
     } catch {
       setError("Failed to create an account")
     }
-
     setLoading(false)
   }
 
@@ -41,12 +41,12 @@ const RegisterForm = () => {
           placeholder="Email*"
           ref={emailRef}
         ></input>
-        <input
+        {/* <input
           type="text"
           id="register-username"
           placeholder="Username*"
           ref={usernameRef}
-        ></input>
+        ></input> */}
         <input
           type="password"
           id="register-password"

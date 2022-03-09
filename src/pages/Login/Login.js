@@ -24,7 +24,7 @@ const Login = () => {
             <p className="link text-bold text-align-right">
               Not registered yet?{" "}
               <span className="text-blue" onClick={() => navigate("/register")}>
-                Create an account
+                Sign Up
                 {/* Arrow icon */}
                 <FontAwesomeIcon
                   className="fa-arrow-right"
