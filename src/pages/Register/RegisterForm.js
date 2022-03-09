@@ -3,16 +3,16 @@ import { useAuth } from "../../contexts/AuthContext";
 import { Alert } from "react-bootstrap"
 import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom"
 
 const RegisterForm = () => {
-
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const usernameRef = useRef()
   const { signup } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  let navigate = useNavigate()
 
   function handleSubmit(e){
     e.preventDefault()
@@ -47,12 +47,12 @@ const RegisterForm = () => {
           placeholder="Email*"
           ref={emailRef}
         ></input>
-        <input
+        {/* <input
           type="text"
           id="register-username"
           placeholder="Username*"
           ref={usernameRef}
-        ></input>
+        ></input> */}
         <input
           type="password"
           id="register-password"
