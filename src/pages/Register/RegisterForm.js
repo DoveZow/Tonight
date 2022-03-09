@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Alert } from "react-bootstrap"
+import { auth } from "../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const RegisterForm = () => {
 
@@ -12,21 +14,25 @@ const RegisterForm = () => {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
 
-  async function handleSubmit(e){
+  function handleSubmit(e){
     e.preventDefault()
     //error checking before signup
-    if (passwordRef.current.value != passwordConfirmRef.current.value)
+    if (passwordRef.current.value !== passwordConfirmRef.current.value)
     {
       return setError("Passwords do not match")
     }
     
-    try{
-      setError("")
-      setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
-    } catch {
-      setError("Failed to create an account")
-    }
+    setError("")
+    setLoading(true)
+    createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
+      .then((userCredential) => {
+        // signs in automatically
+        const user = userCredential.user;
+      })
+      .catch((error) => {
+        setError("Failed to create an account")
+        console.log(error)
+      });
 
     setLoading(false)
   }
