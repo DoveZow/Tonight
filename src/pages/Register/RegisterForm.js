@@ -1,40 +1,41 @@
 import React, { useState, useRef } from "react";
 import { useAuth } from "../../contexts/AuthContext";
-import { Alert } from "react-bootstrap"
-import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom"
+import { Alert } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const passwordConfirmRef = useRef()
-  const { signup } = useAuth()
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  let navigate = useNavigate()
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const { signup } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerUsername, setRegisterUsername] = useState("");
+  let navigate = useNavigate();
 
-  function handleSubmit(e){
-    e.preventDefault()
+  async function handleSubmit(e) {
+    e.preventDefault();
     //error checking before signup
-    if (passwordRef.current.value !== passwordConfirmRef.current.value)
-    {
-      return setError("Passwords do not match")
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match");
     }
-    
-    setError("")
-    setLoading(true)
-    createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
-      .then((userCredential) => {
-        // signs in automatically
-        const user = userCredential.user;
-      })
-      .catch((error) => {
-        setError("Failed to create an account")
-        console.log(error)
-      });
 
-    setLoading(false)
+    try {
+      setError("");
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+      navigate("/");
+      const body = { registerEmail, registerUsername };
+      await fetch("http://localhost:3002/createaccount", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+    } catch {
+      setError("Failed to create an account");
+    }
+    setLoading(false);
   }
 
   return (
@@ -46,13 +47,15 @@ const RegisterForm = () => {
           id="register-email"
           placeholder="Email*"
           ref={emailRef}
+          onChange={(e) => setRegisterEmail(e.target.value)}
         ></input>
-        {/* <input
+        <input
           type="text"
           id="register-username"
           placeholder="Username*"
-          ref={usernameRef}
-        ></input> */}
+          // ref={usernameRef}
+          onChange={(e) => setRegisterUsername(e.target.value)}
+        ></input>
         <input
           type="password"
           id="register-password"
