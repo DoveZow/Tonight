@@ -10,7 +10,6 @@ const RegisterForm = () => {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
-  const [registerValidationMsg, setRegisterValidationMsg] = useState("");
 
   
   const setRegisterEmailHandler = (e) => {

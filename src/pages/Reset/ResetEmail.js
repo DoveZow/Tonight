@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { toast } from "react-toastify";
+import React from "react";
 
 const ResetEmail = ({
   resetForm,
@@ -43,4 +42,3 @@ const ResetEmail = ({
 };
 
 export default ResetEmail;
-//$2b$10$/Egpd8gDXB5XbVkvOkoDeOmSe0HDFWrcsEOjj.nFHuwedIxzJzrqa

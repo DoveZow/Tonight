@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Home = ({ isAuthenticated, setIsAuthenticated }) => {
   const [name, setName] = useState("");
-  let navigate = useNavigate();
-
-
   const getUserCredentials = async () => {
     try {
       const response = await fetch("http://localhost:3002/", {
@@ -42,8 +38,7 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
           Welcome to your home page, <span className="text-blue">{name}</span>.
         </h2>
         <button className="button" onClick={logout}>
-          {" "}
-          Logout{" "}
+          Logout
         </button>
       </div>
     </div>

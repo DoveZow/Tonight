@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import ResetEmail from "./ResetEmail";
 import ResetCode from "./ResetCode";
 import ResetActualPass from "./ResetActualPass";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const ResetPassForm = () => {
   const resetCode = GenerateRandomCode.TextCode(6).toUpperCase();
@@ -67,8 +66,7 @@ const ResetPassForm = () => {
       e.target.reset();
     }
   };
-  console.log(code);
-  console.log(isEmailInputShown);
+  // end email function
 
   return (
     <div className="form-wrapper register-form-wrapper">

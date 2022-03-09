@@ -37,19 +37,19 @@ const ResetActualPass = ({
   };
 
   return (
-    <form>
+    <form onSubmit={resetPassword}>
       <input
-        type="text"
+        type="password"
         placeholder="New password"
         onChange={(e) => setNewPassword(e.target.value)}
       ></input>
       <input
-        type="text"
+        type="password"
         placeholder="Re-type new password"
         onChange={(e) => setConfirmNewPassword(e.target.value)}
       ></input>
       <button
-        onClick={resetPassword}
+        type="submit"
         className="button auth-button width-100 background-blue text-white text-bold"
       >
         Reset Password

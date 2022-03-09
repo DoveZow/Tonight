@@ -29,7 +29,7 @@ const ResetCode = ({
 
   return (
     <Fragment>
-      <form>
+      <form onSubmit={checkCode}>
         <input
           type="text"
           id="reset-code"
@@ -42,7 +42,7 @@ const ResetCode = ({
       </p>
       <br />
       <button
-        onClick={checkCode}
+        type="submit"
         className="button auth-button width-100 background-blue text-white text-bold"
       >
         Continue
