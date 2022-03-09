@@ -13,4 +13,11 @@ REACT_APP_FIREBASE_APP_ID = 1:653959096358:web:62d130a46ec1e709399ee7
 npm i react
 npm i react-bootstrap
 npm i firebase
-npm i react-reouter-dom
+npm i react-router-dom
+
+
+-------------------------------------------------
+New features added to test-branch
+
+1. When user signs up, their username and password is added to postgres database
+2. Username is displayed instead of email after Welcome user ______.
