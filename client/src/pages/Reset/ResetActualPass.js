@@ -22,7 +22,7 @@ const ResetActualPass = ({
       setIsResetPassInputShown(false);
       try {
         const body = { confirmNewPassword, toEmail };
-        await fetch("http://localhost:3002/changepass", {
+        await fetch("/changepass", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)

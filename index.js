@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 const jwtGenerator = require("./utils/jwtGenerator");
 const authorizeUser = require("./middleware/authorizeUser");
 const path = require("path");
@@ -11,17 +11,17 @@ require("dotenv").config();
 const { Pool } = require("pg");
 const pool = new Pool({
   // ===== FOR HEROKU ===== //
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  // connectionString: process.env.DATABASE_URL,
+  // ssl: {
+  //   rejectUnauthorized: false
+  // }
 
   // ===== FOR LOCAL ===== //
-  // user: "postgres",
-  // password: "kimeron123",
-  // host: "localhost",
-  // port: 5432,
-  // database: "tonightusers"
+  user: "postgres",
+  password: "kimeron123",
+  host: "localhost",
+  port: 5432,
+  database: "tonightusers"
 });
 
 app.use(cors());
@@ -52,13 +52,13 @@ app.post("/createaccount", async (req, res) => {
     }
 
     // encrypt password
-    // const saltRound = 10;
-    // const salt = await bcrypt.genSalt(saltRound);
-    // const bcryptPass = await bcrypt.hash(registerPassword, salt);
+    const saltRound = 10;
+    const salt = await bcrypt.genSalt(saltRound);
+    const bcryptPass = await bcrypt.hash(registerPassword, salt);
 
     // insert into database if not exists already
     const newUser = await pool.query(
-      `INSERT INTO users (uname, uemail, upass) VALUES ('${registerUsername}', '${registerEmail}', '${registerPassword}') RETURNING *`
+      `INSERT INTO users (uname, uemail, upass) VALUES ('${registerUsername}', '${registerEmail}', '${bcryptPass}') RETURNING *`
     );
 
     // generate a token
@@ -83,7 +83,12 @@ app.post("/login", async (req, res) => {
       return res.status(401).send("Username or Password is incorrect");
     }
 
-    if (loginPassword !== user.rows[0].upass) {
+    const checkPassword = await bcrypt.compare(
+      loginPassword,
+      user.rows[0].upass
+    );
+
+    if (!checkPassword) {
       return res.status(401).json("Username or password is incorrect");
     }
 
@@ -121,12 +126,12 @@ app.post("/", authorizeUser, async (req, res) => {
 app.post("/changepass", async (req, res) => {
   try {
     const { confirmNewPassword, toEmail } = req.body;
-    // const saltRound = 10;
-    // const salt = await bcrypt.genSalt(saltRound);
-    // const bcryptPass = await bcrypt.hash(confirmNewPassword, salt);
+    const saltRound = 10;
+    const salt = await bcrypt.genSalt(saltRound);
+    const bcryptPass = await bcrypt.hash(confirmNewPassword, salt);
 
-    await pool.query(
-      `UPDATE users SET upass = '${confirmNewPassword}' WHERE uemail = '${toEmail}'`
+    const newPass = await pool.query(
+      `UPDATE users SET upass = '${bcryptPass}' WHERE uemail = '${toEmail}'`
     );
   } catch (err) {
     console.error(err.message);

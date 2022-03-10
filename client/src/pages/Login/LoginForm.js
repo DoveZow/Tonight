@@ -21,7 +21,7 @@ const LoginForm = ({ setIsAuthenticated }) => {
     if (loginUsername !== "" && loginPassword !== "") {
       try {
         const body = { loginUsername, loginPassword };
-        const response = await fetch("http://localhost:3002/login", {
+        const response = await fetch("/login", {
           method: "POST",
           headers: {
             "Content-type": "application/json"
@@ -37,10 +37,10 @@ const LoginForm = ({ setIsAuthenticated }) => {
           navigate("/dashboard");
         } else {
           setIsAuthenticated(false);
+          toast.error("Username or password is incorrect.");
         }
       } catch (err) {
         console.error(err.message);
-        toast.error("Username or password is incorrect.");
       }
     } else {
       setIsAuthenticated(false);
