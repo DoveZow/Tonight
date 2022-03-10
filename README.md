@@ -51,9 +51,11 @@ CREATE DATABASE tonightusers;
 
 \c tonightusers;
 
+create extension if not exists "uuid-ossp";
+
 CREATE TABLE users (uid uuid PRIMARY KEY DEFAULT uuid_generate_v4(), uname VARCHAR(255) NOT NULL, uemail VARCHAR(255) NOT NULL);
 
-create extension if not exists "uuid-ossp";
+
 
 -------------------------------------------------
 New features added to test-branch
