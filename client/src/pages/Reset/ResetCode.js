@@ -17,7 +17,7 @@ const ResetCode = ({
   }
 
   const [inputCode, setInputCode] = useState("");
-  setToEmail("ecoscolluela@icloud.com");
+
   // const resendCode = (e) => {
   //   sendCode(e);
   // };
