@@ -7,17 +7,7 @@ const authorizeUser = require("./middleware/authorizeUser");
 const path = require("path");
 const PORT = process.env.PORT || 3002;
 
-app.use(cors());
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "client/build")));
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
-}
-
-console.log(__dirname);
-console.log(path.join(__dirname, "client/build"));
-
+require("dotenv").config();
 const { Pool } = require("pg");
 const pool = new Pool({
   // ===== FOR HEROKU ===== //
@@ -33,6 +23,17 @@ const pool = new Pool({
   // port: 5432,
   // database: "tonightusers"
 });
+
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "client/build")));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
+
+console.log(__dirname);
+console.log(path.join(__dirname, "client/build"));
 
 // ===== ROUTES ===== //
 
