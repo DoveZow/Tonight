@@ -63,15 +63,13 @@ const ResetPassForm = () => {
             setIsCodeInputShown(false);
           }
         );
-      e.target.reset();
+      // e.target.reset();
     }
   };
   // end email function
 
   return (
     <div className="form-wrapper register-form-wrapper">
-      <p className="reset-msg">{resetMsg}</p>
-      <br />
       <ResetEmail
         resetForm={resetForm}
         sendCode={sendCode}
@@ -80,9 +78,12 @@ const ResetPassForm = () => {
         isResetPassInputShow={isResetPassInputShown}
         setIsCodeInputShown={setIsResetPassInputShown}
         setIsToEmailValid={setIsToEmailValid}
+        resetMsg={resetMsg}
       />
       <ResetCode
         code={code}
+        sendCode={sendCode}
+        setToEmail={setToEmail}
         setCode={setCode}
         setResetMsg={setResetMsg}
         resetForm={resetForm}
@@ -92,6 +93,7 @@ const ResetPassForm = () => {
         setIsCodeInputShown={setIsCodeInputShown}
         toEmail={toEmail}
         setIsResetPassInputShown={setIsResetPassInputShown}
+        resetMsg={resetMsg}
       />
 
       <ResetActualPass

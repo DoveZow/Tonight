@@ -54,7 +54,7 @@ const LoginForm = ({ setIsAuthenticated }) => {
         <input
           type="text"
           id="username"
-          placeholder="Username"
+          placeholder="Username or Email"
           onChange={setLoginUsernameHandler}
         ></input>
         <p

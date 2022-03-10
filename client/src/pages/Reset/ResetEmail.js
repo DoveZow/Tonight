@@ -1,11 +1,13 @@
 import React from "react";
+import { Fragment } from "react";
 
 const ResetEmail = ({
   resetForm,
   sendCode,
   setToEmail,
   isEmailInputShown,
-  setIsToEmailValid
+  setIsToEmailValid,
+  resetMsg
 }) => {
   if (!isEmailInputShown) {
     return null;
@@ -23,21 +25,25 @@ const ResetEmail = ({
   };
 
   return (
-    <form ref={resetForm} onSubmit={sendCode}>
-      <input
-        type="text"
-        id="reset-email"
-        placeholder="Email"
-        name="to_email"
-        onChange={setToEmailHandler}
-      ></input>
-      <button
-        type="submit"
-        className="button auth-button width-100 background-blue text-white text-bold"
-      >
-        Send code
-      </button>
-    </form>
+    <Fragment>
+      <p className="reset-msg">{resetMsg}</p>
+      <form ref={resetForm} onSubmit={sendCode}>
+        <input
+          type="text"
+          id="reset-email"
+          placeholder="Email"
+          name="to_email"
+          onChange={setToEmailHandler}
+        ></input>
+        <button
+          type="submit"
+          onClick={sendCode}
+          className="button auth-button width-100 background-blue text-white text-bold"
+        >
+          Send code
+        </button>
+      </form>
+    </Fragment>
   );
 };
 

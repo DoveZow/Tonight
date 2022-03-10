@@ -7,15 +7,24 @@ const ResetCode = ({
   isCodeInputShown,
   setIsCodeInputShown,
   setIsResetPassInputShown,
-  setResetMsg
+  setResetMsg,
+  resetMsg,
+  sendCode,
+  setToEmail
 }) => {
   if (!isCodeInputShown) {
     return null;
   }
 
   const [inputCode, setInputCode] = useState("");
+  setToEmail("ecoscolluela@icloud.com");
+  // const resendCode = (e) => {
+  //   sendCode(e);
+  // };
 
-  const checkCode = () => {
+  const checkCode = (e) => {
+    e.preventDefault();
+
     if (code === inputCode) {
       toast.success("Success!");
       setIsCodeInputShown(false);
@@ -27,8 +36,11 @@ const ResetCode = ({
     }
   };
 
+  console.log(toEmail);
+
   return (
     <Fragment>
+      <p className="reset-msg">{resetMsg}</p>
       <form onSubmit={checkCode}>
         <input
           type="text"
@@ -43,6 +55,7 @@ const ResetCode = ({
       <br />
       <button
         type="submit"
+        onClick={checkCode}
         className="button auth-button width-100 background-blue text-white text-bold"
       >
         Continue
