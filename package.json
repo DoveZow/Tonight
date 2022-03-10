@@ -6,11 +6,16 @@
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
-    "react": "^17.0.2"
+    "react-bootstrap": "^2.2.0"
   },
   "name": "tonight",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": "16.13.1",
+    "npm": "8.1.2"
+  },
+  "devDependencies": {},
   "scripts": {
     "start": "node index.js",
     "devStart": "nodemon index.js",
