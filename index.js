@@ -3,25 +3,35 @@ const app = express();
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwtGenerator = require("./utils/jwtGenerator");
-const authorizeUser = require("../server/middleware/authorizeUser");
+const authorizeUser = require("./middleware/authorizeUser");
+const path = require("path");
+const PORT = process.env.PORT || 3002;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "client/build")));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
+
+console.log(__dirname);
+console.log(path.join(__dirname, "client/build"));
 
 const { Pool } = require("pg");
 const pool = new Pool({
   // ===== FOR HEROKU ===== //
-  // connectionString: process.env.DATABASE_URL,
-  // ssl: {
-  //     rejectUnauthorized: false
-  // }
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 
-  // ===== FOR LOCAL ===== //
-  user: "postgres",
-  password: "kimeron123",
-  host: "localhost",
-  port: 5432,
-  database: "tonightusers"
+  // // ===== FOR LOCAL ===== //
+  // user: "postgres",
+  // password: "********",
+  // host: "localhost",
+  // port: 5432,
+  // database: "tonightusers"
 });
 
 // ===== ROUTES ===== //
@@ -122,13 +132,16 @@ app.post("/changepass", async (req, res) => {
     const newPass = await pool.query(
       `UPDATE users SET upass = '${bcryptPass}' WHERE uemail = '${toEmail}'`
     );
-
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
 
-app.listen(3002, () => {
-  console.log("Server has started on port 3002");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`Running on port ${PORT}`);
 });
