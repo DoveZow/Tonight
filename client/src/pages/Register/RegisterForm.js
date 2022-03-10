@@ -11,7 +11,6 @@ const RegisterForm = () => {
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
 
-  
   const setRegisterEmailHandler = (e) => {
     setRegisterEmail(e.target.value);
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -52,7 +51,7 @@ const RegisterForm = () => {
     ) {
       try {
         const body = { registerEmail, registerUsername, registerPassword };
-        const response = await fetch("http://localhost:3002/createaccount", {
+        const response = await fetch("/createaccount", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
