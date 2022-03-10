@@ -1,70 +1,64 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+TO RUN:
+1. create .env and paste this or get new ones from firebase google
 
-## Available Scripts
+REACT_APP_FIREBASE_API_KEY = AIzaSyCt7pcSSIKCkwhqGm4AIrClXBEBFpU46fU
+REACT_APP_FIREBASE_AUTH_DOMAIN = test-f8b47.firebaseapp.com
+REACT_APP_FIREBASE_PROJECT_ID = test-f8b47
+REACT_APP_FIREBASE_STORAGE_BUCKET = test-f8b47.appspot.com
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID = 653959096358
+REACT_APP_FIREBASE_APP_ID = 1:653959096358:web:62d130a46ec1e709399ee7
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. open 2 terminals. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. One one terminal, type: 
 
-### `npm test`
+npm i react
+npm i react-bootstrap
+npm i firebase
+npm i react-router-dom
+npm start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. On another terminal, type:
+cd server
 
-### `npm run build`
+then
+nodemon auth
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. If nodemon auth doesn't work, delete node_modules, package-lock.json and package.json in the SERVER folder.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6. Still in the second terminal, type: 
+npm init
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+7. Press enter all the way until a new command line starts.
 
-### `npm run eject`
+8. Then type: 
+npm i express cors pg jsonwebtoken bcrypt
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+9. Now, type either nodemon auth or node auth.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+** FOR mac users, if you get a security message, go to system preferences > security & privacy > general then allow. **
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+-------------------------------------------------------
+TO RECREATE TABLE IN PSQL:
 
-## Learn More
+psql -U postgres
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+CREATE DATABASE tonightusers;
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+\c tonightusers;
 
-### Code Splitting
+CREATE TABLE users (uid uuid PRIMARY KEY DEFAULT uuid_generate_v4(), uname VARCHAR(255) NOT NULL, uemail VARCHAR(255) NOT NULL);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+create extension if not exists "uuid-ossp";
 
-### Analyzing the Bundle Size
+-------------------------------------------------
+New features added to test-branch
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. When user signs up, their username and password is added to postgres database
+2. Username is displayed instead of email after Welcome user ______.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

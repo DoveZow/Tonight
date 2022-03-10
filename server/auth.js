@@ -17,7 +17,7 @@ const pool = new Pool({
 
   // ===== FOR LOCAL ===== //
   user: "postgres",
-  password: "kimeron123",
+  password: "*******", // IMPORTANT: REPLACE STARS ADD YOUR POSTGRES PASSWORD HERE.
   host: "localhost",
   port: 5432,
   database: "tonightusers"
@@ -28,44 +28,43 @@ const pool = new Pool({
 // create account
 app.post("/createaccount", async (req, res) => {
   try {
-    const { registerEmail, registerUsername, registerPassword } = req.body;
+    const { registerEmail, registerUsername } = req.body;
 
     // if user or email already exists, throw an error
     const user = await pool.query(
-      `SELECT * FROM users WHERE uemail ='${registerEmail}' OR uname = '${registerUsername}'`
+      `SELECT * FROM users WHERE uemail ='${registerEmail}' OR uname='${registerUsername}'`
     );
 
     if (user.rows.length !== 0) {
       return res.status(401).send("Email or username already exists.");
     }
 
-    // encrypt password
-    const saltRound = 10;
-    const salt = await bcrypt.genSalt(saltRound);
-    const bcryptPass = await bcrypt.hash(registerPassword, salt);
+    // // encrypt password
+    // const saltRound = 10;
+    // const salt = await bcrypt.genSalt(saltRound);
+    // const bcryptPass = await bcrypt.hash(registerPassword, salt);
 
     // insert into database if not exists already
-    const newUser = await pool.query(
-      `INSERT INTO users (uname, uemail, upass) VALUES ('${registerUsername}', '${registerEmail}', '${bcryptPass}') RETURNING *`
+    await pool.query(
+      `INSERT INTO users (uemail, uname) VALUES ('${registerEmail}', '${registerUsername}') RETURNING *`
     );
 
-    // generate a token
-    const token = jwtGenerator(newUser.rows[0].uid);
-    res.json({ token });
+    // // generate a token
+    // const token = jwtGenerator(newUser.rows[0].uid);
+    // res.json({ token });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
 
-// login
-app.post("/login", async (req, res) => {
+app.post("/getcredit", async (req, res) => {
   try {
-
-
-    // type code here
-
-
+    const { currentEmail } = req.body;
+    const user = await pool.query(
+      `SELECT * FROM users WHERE uemail = '${currentEmail}'`
+    );
+    res.json(user.rows[0]);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
