@@ -1,0 +1,51 @@
+.auth-card {
+  height: 550px;
+}
+
+.auth-credentials {
+  padding: 60px;
+  height: 100%;
+}
+
+.auth-illustration {
+  position: relative;
+  background-color: rgb(11, 0, 161);
+  height: 100%;
+  width: 350px;
+  overflow: hidden;
+}
+
+.auth-container {
+  background-image: url("../../images/login-background.jpg");
+  background-size: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.auth-logo {
+  width: 150px;
+}
+
+.auth-section-wrapper {
+  width: 100%;
+  text-align: center;
+  width: 350px;
+}
+
+.auth-button {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.auth-illustration img {
+  position: absolute;
+  width: 500px !important;
+  top: 25px;
+}
+
+.fa-arrow-right {
+  margin-left: 3px;
+  transform: translateY(0.2px);
+  transition: 0.3s ease;
+}

@@ -1,0 +1,22 @@
+#imh{
+    background-image: url("guillermo-ferla-Oze6U2m1oYU-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    width: 1440px;
+    height: 750px;
+    display: flex;
+    justify-content: center;
+    font-size: large;
+    color: white;
+    display:flex;
+    align-items:center;
+
+
+}
+div{
+    margin-top: 5px;
+
+}
+
+

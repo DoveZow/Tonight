@@ -1,0 +1,28 @@
+
+
+#div1{
+    background-color: white;
+    position: fixed;
+    left: 1270px;
+    color: black;
+    border-radius: 25px;
+    border: solid 1px black;
+    margin-top: -13px;
+    width: 150px;
+
+}
+#dil1,#dli2{
+    text-align: center;
+    
+}
+#p{
+    border-radius: 50px;
+}
+
+span:hover{
+    background-color: red;
+}
+a{
+    text-decoration: none;
+    color: black;
+}

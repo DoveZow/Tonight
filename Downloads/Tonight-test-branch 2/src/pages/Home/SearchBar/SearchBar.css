@@ -1,0 +1,16 @@
+#search{
+    position: relative;
+    width: 600px;
+    left: 700px;
+    bottom: 700px;
+    
+}
+
+#button{
+
+    position: relative;
+    bottom: 700px;
+    left: 725px;
+    width: 75px;
+
+}

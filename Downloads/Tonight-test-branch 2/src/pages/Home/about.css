@@ -1,0 +1,38 @@
+h1{
+    position: relative;
+    padding-left: 635px;
+    color: rgb(233, 208, 208);
+    background-color:rgb(4, 4, 82);
+}
+#looking{
+    position: relative;
+    padding-left: 800px;
+    bottom: 200px;
+}
+
+#p2{
+    width: 650px;
+}
+#p3{
+    position: relative;
+    bottom: 200px;;
+}
+main{
+    position: relative;
+    top: -8px;
+    background-image: url("login-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    width: 1440px;
+    height: 750px;
+    color: white;
+}
+footer{
+    color: rgb(233, 208, 208);
+    background-color:rgb(4, 4, 82);
+    height: 40px;
+    position: relative;
+    bottom: 8px;
+    padding-left: 7px;
+}
