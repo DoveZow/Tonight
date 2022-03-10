@@ -5,7 +5,7 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
   const [name, setName] = useState("");
   const getUserCredentials = async () => {
     try {
-      const response = await fetch("http://localhost:3002/", {
+      const response = await fetch("/", {
         method: "POST",
         headers: { token: localStorage.token }
       });
