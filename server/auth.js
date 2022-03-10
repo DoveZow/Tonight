@@ -17,7 +17,7 @@ const pool = new Pool({
 
   // ===== FOR LOCAL ===== //
   user: "postgres",
-  password: "kimeron123",
+  password: "*******", // IMPORTANT: REPLACE STARS ADD YOUR POSTGRES PASSWORD HERE.
   host: "localhost",
   port: 5432,
   database: "tonightusers"
