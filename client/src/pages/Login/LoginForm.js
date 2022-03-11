@@ -42,6 +42,7 @@ const LoginForm = ({ setIsAuthenticated }) => {
         }
       } catch (err) {
         console.error(err.message);
+        toast.error("Username or password is incorrect.");
       }
     } else {
       setIsAuthenticated(false);
