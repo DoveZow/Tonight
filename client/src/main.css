@@ -7,6 +7,15 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: rgb(243, 243, 243);
+}
+
+.global-width {
+  width: 1200px;
+  margin: 0 auto;
+}
+
 .center-content {
   display: flex;
   justify-content: center;
@@ -52,7 +61,7 @@ label {
 }
 
 .button {
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
   padding: 10px;
   font-size: 1em;
@@ -107,4 +116,17 @@ button:hover {
 
 .text-align-left {
   text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.text-gray {
+  color: gray;
+}
+
+.vertical-center {
+  display: flex;
+  align-items: center;
 }

@@ -1,0 +1,118 @@
+.nav-container {
+  width: 100vw;
+  padding: 5px 0px;
+  position: absolute;
+  z-index: 10;
+  top: 20px;
+}
+
+nav {
+  margin: 0 auto;
+  display: flex;
+  padding: 10px 0px;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav li {
+  display: inline;
+  margin: 20px;
+  font-weight: 600;
+  color: white;
+}
+
+.nav-search {
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+.nav-search-input {
+  margin: 0;
+  background-color: transparent;
+  color: white;
+  padding: 9px 10px !important;
+  width: 150px !important;
+  transition: 0.3s ease;
+}
+
+.nav-search-input:focus {
+  width: 300px !important;
+}
+
+.nav-login-button {
+  padding: 10px 30px !important;
+}
+
+.nav-search-input::placeholder {
+  color: rgb(241, 241, 241);
+}
+
+.nav-button-list {
+  margin-right: 0px;
+  margin-left: 20px;
+}
+
+nav img {
+  width: 110px;
+}
+
+.user-cred {
+  font-weight: 600;
+  margin-left: 30px;
+}
+
+.profile-pic {
+  background-image: url("../../images/no-profile-pic.jpg");
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.nav-dropdown-container {
+  width: 100vw;
+  background-color: red;
+}
+
+.nav-dropdown-container {
+  background-color: blue;
+  width: 1200px;
+  margin: 0 auto;
+  transition: 0.3s ease;
+}
+
+.dropdown {
+  background-color: white;
+  padding: 20px 0px;
+  width: fit-content;
+  float: right;
+  border-radius: 5px;
+}
+
+.dropdown ul {
+  list-style: none;
+}
+
+.logout {
+  margin-top: 40px;
+  font-weight: 600;
+  margin-bottom: 0px !important;
+}
+
+.dropdown li {
+  margin-bottom: 10px;
+  padding-right: 60px;
+  padding-left: 30px;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  transition: 0.3s ease;
+}
+
+.dropdown li:hover {
+  background-color: rgb(235, 235, 235);
+}

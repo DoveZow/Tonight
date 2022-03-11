@@ -1,0 +1,42 @@
+.nav-container {
+  width: 100vw;
+  padding: 5px 0px;
+  position: absolute;
+}
+
+nav {
+  margin: 0 auto;
+  display: flex;
+  padding: 10px 0px;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav li {
+  display: inline;
+  margin: 20px;
+  font-weight: 600;
+}
+
+.nav-search {
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+.nav-search-input {
+  margin: 0;
+}
+
+.nav-login-button {
+  padding: 10px 30px !important;
+}
+
+.nav-button-list {
+  margin-right: 0px;
+}
+
+nav img {
+  width: 100px;
+}

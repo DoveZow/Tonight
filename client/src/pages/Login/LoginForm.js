@@ -34,7 +34,8 @@ const LoginForm = ({ setIsAuthenticated }) => {
         if (parseRes.token) {
           localStorage.setItem("token", parseRes.token);
           setIsAuthenticated(true);
-          navigate("/dashboard");
+          navigate("/");
+          toast.success("Logged in successfully.");
         } else {
           setIsAuthenticated(false);
           toast.error("Username or password is incorrect.");
@@ -46,6 +47,8 @@ const LoginForm = ({ setIsAuthenticated }) => {
       setIsAuthenticated(false);
       toast.error("Please fill in all fields.");
     }
+    setLoginPassword("");
+    setLoginUsername("");
   };
 
   return (
@@ -55,6 +58,7 @@ const LoginForm = ({ setIsAuthenticated }) => {
           type="text"
           id="username"
           placeholder="Username or Email"
+          value={loginUsername}
           onChange={setLoginUsernameHandler}
         ></input>
         <p
@@ -67,6 +71,7 @@ const LoginForm = ({ setIsAuthenticated }) => {
           type="password"
           id="password"
           placeholder="Password"
+          value={loginPassword}
           onChange={setLoginPasswordHandler}
         ></input>
         <button

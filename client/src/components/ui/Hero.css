@@ -1,0 +1,25 @@
+.hero-container {
+  position: absolute;
+  height: 800px;
+  background-image: url("../../images/hero-image.jpg");
+}
+
+.hero {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 3.2em;
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  width: 800px;
+}
+
+.hero p {
+  font-size: 1.3em;
+}

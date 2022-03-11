@@ -12,8 +12,6 @@ import illustration from "../../images/login-illustration.svg";
 import LoginForm from "./LoginForm";
 
 const Login = ({ setIsAuthenticated, isAuthenticated }) => {
-
-
   let navigate = useNavigate();
   return (
     <div className="auth-container center-content page-width page-height">
@@ -24,8 +22,8 @@ const Login = ({ setIsAuthenticated, isAuthenticated }) => {
             <LoginForm setIsAuthenticated={setIsAuthenticated} />
             <p className="link text-bold text-align-right">
               Not registered yet?{" "}
-              <span className="text-blue" onClick={() => navigate("/register")}>
-                Create an account
+              <span className="text-blue" onClick={() => navigate("/usertype")}>
+                Sign up
                 {/* Arrow icon */}
                 <FontAwesomeIcon
                   className="fa-arrow-right"

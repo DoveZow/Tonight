@@ -26,3 +26,66 @@
 .hidden {
   display: none;
 }
+
+.user-type {
+  width: 200px;
+  padding: 20px;
+  text-align: center;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: white;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.user-type:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: #1f34e9;
+  color: white;
+}
+
+.user-types-wrapper {
+  width: 700px;
+}
+
+.user-types-heading {
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+.user-types-wrapper p {
+  margin-right: 30px;
+  float: right;
+  font-size: 1em;
+  background-color: transparent;
+  border: none;
+  padding: 0px;
+  margin-top: 10px;
+
+  cursor: pointer;
+}
+
+.fa-arrow-left-long {
+  transition: 0.3s ease !important;
+}
+
+.user-types-wrapper p:hover {
+  transform: translateY(0);
+}
+
+.user-types-wrapper p:hover .fa-arrow-left-long {
+  transform: translateX(-5px);
+}
+
+.change-text {
+  font-size: 0.8em;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.change-text:hover {
+  opacity: 0.6;
+}

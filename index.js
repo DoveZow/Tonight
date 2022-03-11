@@ -11,17 +11,17 @@ require("dotenv").config();
 const { Pool } = require("pg");
 const pool = new Pool({
   // ===== FOR HEROKU ===== //
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  // connectionString: process.env.DATABASE_URL,
+  // ssl: {
+  //   rejectUnauthorized: false
+  // }
 
   // ===== FOR LOCAL ===== //
-  // user: "postgres",
-  // password: "kimeron123",
-  // host: "localhost",
-  // port: 5432,
-  // database: "tonightusers"
+  user: "postgres",
+  password: "kimeron123",
+  host: "localhost",
+  port: 5432,
+  database: "tonightusers"
 });
 
 app.use(cors());
@@ -40,7 +40,8 @@ console.log(path.join(__dirname, "client/build"));
 // create account
 app.post("/createaccount", async (req, res) => {
   try {
-    const { registerEmail, registerUsername, registerPassword } = req.body;
+    const { registerEmail, registerUsername, registerPassword, userType } =
+      req.body;
 
     // if user or email already exists, throw an error
     const user = await pool.query(
@@ -58,7 +59,7 @@ app.post("/createaccount", async (req, res) => {
 
     // insert into database if not exists already
     const newUser = await pool.query(
-      `INSERT INTO users (uname, uemail, upass) VALUES ('${registerUsername}', '${registerEmail}', '${bcryptPass}') RETURNING *`
+      `INSERT INTO users (uname, uemail, upass, utype) VALUES ('${registerUsername}', '${registerEmail}', '${bcryptPass}', '${userType}') RETURNING *`
     );
 
     // generate a token

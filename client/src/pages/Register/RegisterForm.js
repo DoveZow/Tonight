@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const RegisterForm = () => {
+const RegisterForm = ({ userType }) => {
   let navigate = useNavigate();
   // useState variables
   const [registerEmail, setRegisterEmail] = useState("");
@@ -50,7 +50,12 @@ const RegisterForm = () => {
       isEmailValid === true
     ) {
       try {
-        const body = { registerEmail, registerUsername, registerPassword };
+        const body = {
+          registerEmail,
+          registerUsername,
+          registerPassword,
+          userType
+        };
         const response = await fetch("/createaccount", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -61,7 +66,7 @@ const RegisterForm = () => {
 
         if (parseRes.token) {
           localStorage.setItem("token", parseRes.token);
-          navigate("/");
+          navigate("/login");
           toast.success("Registered successfully");
         }
       } catch (err) {
@@ -80,51 +85,53 @@ const RegisterForm = () => {
       registerPassword !== "" &&
       registerConfirmPassword !== ""
     ) {
-      toast.error("Invalid email");
+      toast.error("Invalid email format");
     } else {
       toast.error("Please fill in all fields.");
     }
   };
 
   return (
-    <div className="form-wrapper register-form-wrapper">
-      <form>
-        <input
-          type="text"
-          id="register-email"
-          placeholder="Email*"
-          value={registerEmail}
-          onChange={setRegisterEmailHandler}
-        ></input>
-        <input
-          type="text"
-          id="register-username"
-          placeholder="Username*"
-          value={registerUsername}
-          onChange={setRegisterUsernameHandler}
-        ></input>
-        <input
-          type="password"
-          id="register-password"
-          placeholder="Password*"
-          value={registerPassword}
-          onChange={setRegisterPasswordHandler}
-        ></input>
-        <input
-          type="password"
-          id="register-confirm-password"
-          placeholder="Re-type Password*"
-          value={registerConfirmPassword}
-          onChange={setRegisterConfirmPasswordHandler}
-        ></input>
-        <button
-          className="button auth-button width-100 background-blue text-white text-bold"
-          onClick={newUserHandler}
-        >
-          Create Account
-        </button>
-      </form>
-    </div>
+    <Fragment>
+      <div className="form-wrapper register-form-wrapper">
+        <form>
+          <input
+            type="text"
+            id="register-email"
+            placeholder="Email*"
+            value={registerEmail}
+            onChange={setRegisterEmailHandler}
+          ></input>
+          <input
+            type="text"
+            id="register-username"
+            placeholder="Username*"
+            value={registerUsername}
+            onChange={setRegisterUsernameHandler}
+          ></input>
+          <input
+            type="password"
+            id="register-password"
+            placeholder="Password*"
+            value={registerPassword}
+            onChange={setRegisterPasswordHandler}
+          ></input>
+          <input
+            type="password"
+            id="register-confirm-password"
+            placeholder="Re-type Password*"
+            value={registerConfirmPassword}
+            onChange={setRegisterConfirmPasswordHandler}
+          ></input>
+          <button
+            className="button auth-button width-100 background-blue text-white text-bold"
+            onClick={newUserHandler}
+          >
+            Create Account
+          </button>
+        </form>
+      </div>
+    </Fragment>
   );
 };
 
