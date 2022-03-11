@@ -13,15 +13,30 @@
   text-align: center;
 }
 
+@keyframes move-text-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 100;
+    transform: translateY(0px);
+  }
+}
+
 .hero h2 {
   font-size: 3.2em;
   margin-bottom: 20px;
+  animation: move-text-up 1s;
 }
 
 .hero-text {
-  width: 800px;
+  width: 900px;
 }
 
 .hero p {
   font-size: 1.3em;
+  animation: move-text-up 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
 }
