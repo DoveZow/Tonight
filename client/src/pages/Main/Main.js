@@ -43,7 +43,7 @@ const Main = ({
         setUsername={setUsername}
         username={username}
       />
-      <Hero username={username} />
+      <Hero username={username} isAuthenticated={isAuthenticated} />
     </Fragment>
   );
 };
