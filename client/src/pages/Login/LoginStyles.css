@@ -1,5 +1,18 @@
+@keyframes moveup {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 100;
+    transform: translateY(0px);
+  }
+}
+
 .auth-card {
   height: fit-content;
+  animation: moveup 0.5s ease;
 }
 
 .auth-credentials {
