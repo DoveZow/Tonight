@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const LoginForm = ({ setIsAuthenticated }) => {
+const LoginForm = ({ setIsAuthenticated, setIsAdmin }) => {
   let navigate = useNavigate();
   // type code here for login validation
   const [loginUsername, setLoginUsername] = useState("");

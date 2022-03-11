@@ -11,7 +11,7 @@ import illustration from "../../images/login-illustration.svg";
 // import components
 import LoginForm from "./LoginForm";
 
-const Login = ({ setIsAuthenticated, isAuthenticated }) => {
+const Login = ({ setIsAuthenticated, isAuthenticated, setIsAdmin }) => {
   let navigate = useNavigate();
   return (
     <div className="auth-container center-content page-width page-height">
@@ -19,7 +19,10 @@ const Login = ({ setIsAuthenticated, isAuthenticated }) => {
         <section className="auth-credentials background-white center-content">
           <div className="auth-section-wrapper">
             <img className="auth-logo" src={logo} alt="logo" />
-            <LoginForm setIsAuthenticated={setIsAuthenticated} />
+            <LoginForm
+              setIsAuthenticated={setIsAuthenticated}
+              setIsAdmin={setIsAdmin}
+            />
             <p className="link text-bold text-align-right">
               Not registered yet?{" "}
               <span className="text-blue" onClick={() => navigate("/usertype")}>

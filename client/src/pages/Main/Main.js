@@ -4,12 +4,15 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../images/tonight-logo.svg";
 import Nav from "../../components/ui/Nav";
 import Hero from "../../components/ui/Hero";
+import { toast } from "react-toastify";
 
 const Main = ({
   isAuthenticated,
   setIsAuthenticated,
   username,
-  setUsername
+  setUsername,
+  isAdmin,
+  setIsAdmin
 }) => {
   const getUserCredentials = async () => {
     try {
@@ -19,6 +22,9 @@ const Main = ({
       });
       const parseRes = await response.json();
       setUsername(parseRes.uname);
+      if (parseRes.utype === "admin") {
+        toast.success("You're an admin");
+      }
     } catch (err) {
       console.error(err.message);
     }
@@ -27,6 +33,7 @@ const Main = ({
   useEffect(() => {
     getUserCredentials();
   }, []);
+
   let navigate = useNavigate();
   return (
     <Fragment>

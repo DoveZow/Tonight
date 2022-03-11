@@ -2,6 +2,8 @@
   position: absolute;
   height: 800px;
   background-image: url("../../images/hero-image.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 .hero {

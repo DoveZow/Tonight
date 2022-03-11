@@ -36,6 +36,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [userType, setUserType] = useState("");
   const [username, setUsername] = useState("");
+  const [isAdmin, setIsAdmin] = useState("");
 
   const getUserCredentials = async () => {
     try {
@@ -53,6 +54,8 @@ function App() {
   useEffect(() => {
     getUserCredentials();
   }, []);
+
+  console.log(isAdmin);
 
   useEffect(() => {
     const data = localStorage.getItem("UserType");
@@ -80,6 +83,8 @@ function App() {
               setIsAuthenticated={setIsAuthenticated}
               setUsername={setUsername}
               username={username}
+              isAdmin={isAdmin}
+              setIsAdmin={setIsAdmin}
             />
           }
         />
@@ -99,7 +104,12 @@ function App() {
         />
         <Route
           path="/login"
-          element={<Login setIsAuthenticated={setIsAuthenticated} />}
+          element={
+            <Login
+              setIsAuthenticated={setIsAuthenticated}
+              setIsAdmin={setIsAdmin}
+            />
+          }
         />
         <Route path="/register" element={<Register userType={userType} />} />
         <Route path="/resetpassword" element={<ResetPass />} />
