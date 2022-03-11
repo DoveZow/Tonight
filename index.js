@@ -89,7 +89,7 @@ app.post("/login", async (req, res) => {
       user.rows[0].upass
     );
 
-    if (!checkPassword || loginPassword !== user.rows[0].upass) {
+    if (!checkPassword) {
       return res.status(401).json("Username or password is incorrect");
     }
 
