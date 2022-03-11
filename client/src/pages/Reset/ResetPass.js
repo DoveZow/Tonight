@@ -16,7 +16,10 @@ const ResetPass = () => {
             <ResetPassForm />
             <p className="text-bold text-align-right">
               Remembered?{" "}
-              <span className="link text-blue" onClick={() => navigate("/")}>
+              <span
+                className="link text-blue"
+                onClick={() => navigate("/login")}
+              >
                 Login now
                 {/* Arrow icon */}
                 <FontAwesomeIcon
