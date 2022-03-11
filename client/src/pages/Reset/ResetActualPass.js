@@ -18,7 +18,7 @@ const ResetActualPass = ({
     e.preventDefault();
     if (confirmNewPassword === newPassword) {
       toast.success("Password changed successfully.");
-      navigate("/");
+      navigate("/login");
       setIsResetPassInputShown(false);
       try {
         const body = { confirmNewPassword, toEmail };
