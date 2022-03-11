@@ -10,7 +10,9 @@ const Nav = ({
   isAuthenticated,
   setIsAuthenticated,
   username,
-  setUsername
+  setUsername,
+  isAdmin,
+  setIsAdmin
 }) => {
   let navigate = useNavigate();
 
@@ -40,6 +42,8 @@ const Nav = ({
             setUsername={setUsername}
             setIsDropdownShown={setIsDropdownShown}
             isDropdownShown={isDropdownShown}
+            isAdmin={isAdmin}
+            setIsAdmin={setIsAdmin}
           />
         </nav>
         <NavDropDown

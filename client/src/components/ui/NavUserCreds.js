@@ -2,14 +2,15 @@ import React, { useState, useEffect, Fragment } from "react";
 import { toast } from "react-toastify";
 import "./Nav.css";
 import NavDropDown from "./NavDropDown";
+import AdminBadge from "./AdminBadge";
 
 const NavUserCreds = ({
-  setIsAuthenticated,
   username,
-  setUsername,
   setIsDropdownShown,
   isDropdownShown,
-  isAuthenticated
+  isAuthenticated,
+  isAdmin,
+  setIsAdmin
 }) => {
   if (!isAuthenticated) {
     return null;
@@ -21,6 +22,7 @@ const NavUserCreds = ({
         className="profile-pic"
         onClick={() => setIsDropdownShown(!isDropdownShown)}
       ></div>
+      <AdminBadge isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
     </Fragment>
   );
 };

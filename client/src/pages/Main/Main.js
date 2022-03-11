@@ -1,10 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "../Main/Main.css";
 import { useNavigate } from "react-router-dom";
-import logo from "../../images/tonight-logo.svg";
 import Nav from "../../components/ui/Nav";
 import Hero from "../../components/ui/Hero";
-import { toast } from "react-toastify";
 
 const Main = ({
   isAuthenticated,
@@ -23,7 +21,7 @@ const Main = ({
       const parseRes = await response.json();
       setUsername(parseRes.uname);
       if (parseRes.utype === "admin") {
-        toast.success("You're an admin");
+        setIsAdmin(true);
       }
     } catch (err) {
       console.error(err.message);
@@ -42,6 +40,8 @@ const Main = ({
         setIsAuthenticated={setIsAuthenticated}
         setUsername={setUsername}
         username={username}
+        isAdmin={isAdmin}
+        setIsAdmin={setIsAdmin}
       />
       <Hero username={username} isAuthenticated={isAuthenticated} />
     </Fragment>

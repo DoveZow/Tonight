@@ -117,3 +117,9 @@ nav img {
 .dropdown li:hover {
   background-color: rgb(235, 235, 235);
 }
+
+.admin-badge {
+  color: rgb(86, 230, 255);
+  font-weight: 700;
+  margin-left: 10px;
+}
