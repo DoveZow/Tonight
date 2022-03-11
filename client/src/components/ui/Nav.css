@@ -21,6 +21,7 @@ nav li {
   margin: 20px;
   font-weight: 600;
   color: white;
+  cursor: pointer;
 }
 
 .nav-search {

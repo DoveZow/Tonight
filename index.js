@@ -11,17 +11,17 @@ require("dotenv").config();
 const { Pool } = require("pg");
 const pool = new Pool({
   // ===== FOR HEROKU ===== //
-  // connectionString: process.env.DATABASE_URL,
-  // ssl: {
-  //   rejectUnauthorized: false
-  // }
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 
   // ===== FOR LOCAL ===== //
-  user: "postgres",
-  password: "kimeron123",
-  host: "localhost",
-  port: 5432,
-  database: "tonightusers"
+  // user: "postgres",
+  // password: "kimeron123",
+  // host: "localhost",
+  // port: 5432,
+  // database: "tonightusers"
 });
 
 app.use(cors());
