@@ -35,11 +35,11 @@
   border-radius: 5px;
   background-color: white;
   font-weight: 600;
-  transition: 0.3s ease;
+  transition: 0.3s ease !important;
 }
 
 .user-type:hover {
-  transform: scale(1.1);
+  transform: scale(1.1) !important;
   cursor: pointer;
   background-color: #1f34e9;
   color: white;
@@ -104,19 +104,18 @@
 
 .user-photographer {
   animation: moveup 1s ease;
-  animation-fill-mode: both;
 }
 
 .user-enthusiast {
   animation: moveup 1s ease;
   animation-delay: 0.2s;
-  animation-fill-mode: both;
+  animation-fill-mode: backwards;
 }
 
 .user-student {
   animation: moveup 1s ease;
   animation-delay: 0.4s;
-  animation-fill-mode: both;
+  animation-fill-mode: backwards;
 }
 
 .p-link {
