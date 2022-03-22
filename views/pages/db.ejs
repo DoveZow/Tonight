@@ -1,23 +1,67 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <%- include ("../partials/header.ejs") %>
-</head>
-
-<body>
-
-<%- include ("../partials/nav.ejs") %>
-
-<div class="container">
-<h2>Database Results</h2>
-
-<ul>
-    <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.name %></li>
-    <% }); %>
-</ul>
-
-</div>
-
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Weather</title>
+    </head>
+    <body>
+        <main>
+            <table>
+                <tr>
+                    <td>
+                        City Name
+                    </td>
+                    <td>
+                        <%=W.cityName%>
+                    </td>
+                </tr>
+                <tr>
+                  <td>
+                      Weather
+                  </td>
+                  <td>
+                      <%=W.weather%>
+                  </td>
+              </tr>
+              <tr>
+                <td>
+                    Visibility
+                </td>
+                <td>
+                    <%=W.visibility%>
+                </td>
+            </tr>
+            <tr>
+              <td>
+                  Current Temperature
+              </td>
+              <td>
+                  <%=W.temp%>
+              </td>
+          </tr>
+          <tr>
+            <td>
+                Min Temperature
+            </td>
+            <td>
+                <%=W.temp_min%>
+            </td>
+        </tr>
+        <tr>
+          <td>
+              Max Temperature
+          </td>
+          <td>
+              <%=W.temp_max%>
+          </td>
+      </tr>
+            </table>
+            <style>
+              table,td{
+                border-collapse: collapse;
+                border: 1px solid black;
+              }
+            </style>
+        </main>
+    </body>
 </html>
