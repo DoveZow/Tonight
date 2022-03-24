@@ -29,9 +29,9 @@ const Nav = ({
           </div>
           <div className="nav-links">
             <ul>
-              {/* <li>About</li>
+              <li>About</li>
               <li>Link</li>
-              <li>Link</li> */}
+              <li>Link</li>
             </ul>
           </div>
           <NavLoginButton isAuthenticated={isAuthenticated} />
