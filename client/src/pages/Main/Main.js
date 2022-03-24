@@ -43,7 +43,7 @@ const Main = ({
         isAdmin={isAdmin}
         setIsAdmin={setIsAdmin}
       />
-      <Hero username={username} isAuthenticated={isAuthenticated} />
+      <Hero username={username} isAuthenticated={isAuthenticated} isAdmin={isAdmin}/>
     </Fragment>
   );
 };

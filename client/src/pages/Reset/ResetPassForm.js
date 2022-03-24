@@ -21,7 +21,9 @@ const ResetPassForm = () => {
   const [isCodeInputShown, setIsCodeInputShown] = useState(false);
   const [isResetPassInputShown, setIsResetPassInputShown] = useState(false);
   const [isToEmailValid, setIsToEmailValid] = useState(false);
-
+  const [isToEmailExist, setIsToEmailExist] = useState(false);
+  const [isEmail, setIsEmail] = useState("");
+  console.log(isEmail);
   // email function
   useEffect(() => {
     setCode(resetCode);
@@ -32,11 +34,14 @@ const ResetPassForm = () => {
     to_email: toEmail
   };
   const resetForm = useRef();
-  const sendCode = (e) => {
+  const sendCode = async (e) => {
     e.preventDefault();
+    // const getEmailCredential = async () => 
+    // };
+
     if (!isToEmailValid && !(toEmail === "")) {
       toast.error("Invalid email.");
-    } else if (toEmail === "") {
+    } else if (toEmail !== isEmail) {
       toast.error("Please type in your email.");
     } else {
       emailjs
@@ -79,6 +84,11 @@ const ResetPassForm = () => {
         setIsCodeInputShown={setIsResetPassInputShown}
         setIsToEmailValid={setIsToEmailValid}
         resetMsg={resetMsg}
+        isToEmailExist={isToEmailExist}
+        setIsToEmailExist={setIsToEmailExist}
+        toEmail={toEmail}
+        isEmail={isEmail}
+        setIsEmail={setIsEmail}
       />
       <ResetCode
         code={code}

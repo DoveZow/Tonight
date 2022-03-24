@@ -1,8 +1,8 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { toast } from "react-toastify";
+import React, { Fragment } from "react";
 import "./Nav.css";
-import NavDropDown from "./NavDropDown";
 import AdminBadge from "./AdminBadge";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const NavUserCreds = ({
   username,
@@ -22,6 +22,10 @@ const NavUserCreds = ({
         className="profile-pic"
         onClick={() => setIsDropdownShown(!isDropdownShown)}
       ></div>
+      <FontAwesomeIcon
+        className="text-white fa-angle-down"
+        icon={faAngleDown}
+      />
       <AdminBadge isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
     </Fragment>
   );

@@ -10,6 +10,7 @@ import ResetPass from "./pages/Reset/ResetPass";
 import UserType from "./pages/Register/UserType";
 import Main from "./pages/Main/Main";
 import Profile from "./pages/Profile/Profile";
+import ManageUsers from "./pages/Admin/ManageUsers";
 
 toast.configure();
 
@@ -35,7 +36,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [userType, setUserType] = useState("");
   const [username, setUsername] = useState("");
-  const [isAdmin, setIsAdmin] = useState("");
+  const [isAdmin, setIsAdmin] = useState(true);
 
   const getUserCredentials = async () => {
     try {
@@ -45,6 +46,11 @@ function App() {
       });
       const parseRes = await response.json();
       setUsername(parseRes.uname);
+      if (parseRes.utype === "admin") {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
+      }
     } catch (err) {
       console.error(err.message);
     }
@@ -115,6 +121,18 @@ function App() {
         <Route
           path="/usertype"
           element={<UserType setUserType={setUserType} />}
+        />
+         <Route
+          path="/manageusers"
+          element={
+            isAdmin? (
+              <ManageUsers
+                isAdmin={isAdmin}
+              />
+            ) : (
+              <Navigate replace to="/" />
+            )
+          }
         />
       </Routes>
     </Router>

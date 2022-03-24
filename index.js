@@ -11,17 +11,17 @@ require("dotenv").config();
 const { Pool } = require("pg");
 const pool = new Pool({
   // ===== FOR HEROKU ===== //
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  // connectionString: process.env.DATABASE_URL,
+  // ssl: {
+  //   rejectUnauthorized: false
+  // }
 
   // ===== FOR LOCAL ===== //
-  // user: "postgres",
-  // password: "kimeron123",
-  // host: "localhost",
-  // port: 5432,
-  // database: "tonightusers"
+  user: "postgres",
+  password: "kimeron123",
+  host: "localhost",
+  port: 5432,
+  database: "tonightusers"
 });
 
 app.use(cors());
@@ -101,6 +101,19 @@ app.post("/login", async (req, res) => {
   }
 });
 
+app.post("/checkemail", async (req, res) => {
+  try {
+    const { toEmail } = req.body;
+    const user = await pool.query(
+      `SELECT * FROM users WHERE uemail = '${toEmail}'`
+    );
+
+    res.json(user.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 app.post("/verified", authorizeUser, async (req, res) => {
   try {
     res.json(true);
@@ -133,6 +146,41 @@ app.post("/changepass", async (req, res) => {
 
     const newPass = await pool.query(
       `UPDATE users SET upass = '${bcryptPass}' WHERE uemail = '${toEmail}'`
+    );
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+app.post("/getall", async (req, res) => {
+  try {
+    const user = await pool.query("SELECT * FROM users");
+
+    res.json(user.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+app.post("/changeusercreds", async (req, res) => {
+  try {
+    const { uid, newUsername, newEmail, newType } = req.body;
+    const newCreds = await pool.query(
+      `UPDATE users SET uname = '${newUsername}', uemail = '${newEmail}', utype = '${newType}' WHERE uid = ${uid}`
+    );
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+app.post("/deleteuser", async (req, res) => {
+  try {
+    const { idToDelete } = req.body;
+    const deleteUser = await pool.query(
+      `DELETE FROM users WHERE uid = ${idToDelete}`
     );
   } catch (err) {
     console.error(err.message);

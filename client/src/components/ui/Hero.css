@@ -1,13 +1,20 @@
 .hero-container {
   position: absolute;
   height: 100vh;
-  background-image: url("../../images/hero-image.jpg");
   background-position: center;
   background-size: cover;
 }
 
+.hero-background {
+  background-image: url("../../images/hero-image.jpg");
+}
+
+.hero-background-admin {
+  background-color: blue;
+}
+
 .hero {
-  background-color: rgba(0, 0, 0, 0.678);
+  background-color: rgba(0, 0, 0, 0.61);
   height: 100%;
   width: 100%;
   text-align: center;
