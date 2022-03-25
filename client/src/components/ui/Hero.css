@@ -47,3 +47,8 @@
   animation-delay: 0.5s;
   animation-fill-mode: both;
 }
+
+.weather{
+  position: relative;
+  right: 250px;
+}

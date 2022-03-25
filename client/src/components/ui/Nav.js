@@ -27,13 +27,13 @@ const Nav = ({
           <div className="nav-search">
             <input className="nav-search-input" placeholder="Search" />
           </div>
-          <div className="nav-links">
+          {/* <div className="nav-links">
             <ul>
               <li>About</li>
               <li>Link</li>
               <li>Link</li>
             </ul>
-          </div>
+          </div> */}
           <NavLoginButton isAuthenticated={isAuthenticated} />
           <NavUserCreds
             isAuthenticated={isAuthenticated}

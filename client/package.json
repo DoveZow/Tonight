@@ -16,6 +16,7 @@
     "emailjs-com": "^3.2.0",
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
     "pg": "^8.7.3",
     "react": "^17.0.2",
     "react-browser-router": "^2.1.2",
