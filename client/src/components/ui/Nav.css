@@ -59,18 +59,41 @@ nav li:hover {
   margin-right: 30px;
 }
 
-.nav-search-input {
+
+
+.submit{
+  width: 100px;
+  
+  position: absolute;
+  top: 15px;
+  right:285px;
+
+}
+
+#two{
+  position: absolute;
+  left: 890px;
+  top:15px;
+  width: 165px !important;
+  
+}
+
+#one{
+  position: absolute;
+  top: 20px;
+  left: 725px;
+  width: 165px !important;
+}
+
+.options {
   margin: 0;
-  background-color: transparent;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 9px 10px !important;
-  width: 150px !important;
+  width: 165px !important;
   transition: 0.3s ease;
 }
 
-.nav-search-input:focus {
-  width: 300px !important;
-}
 
 .nav-login-button {
   padding: 10px 30px !important;
@@ -203,3 +226,5 @@ nav img {
   font-size: 0.7em;
   opacity: 0.8;
 }
+
+

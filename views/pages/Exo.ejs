@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Viewing Page</title>
+    
+    
+</head>
+<body id="body">
+    <script>
+        var a = document.getElementById("body")
+        a.style.backgroundImage = "url('https://airwallpaper.com/wp-content/uploads/wall004/Space-Desktop-Background-1920x1080-1.jpg')"
+    </script>
+    <h1>Exoplanet Information</h1>
+    <div>
+        <% arr.forEach(function(r) { %>
+        <table class="table">
+            <tr>
+                <td class="left">Planet Name</td>
+                <td><%=r.planetName%></td>
+            </tr>
+            <tr>
+                <td>Planet Mass</td>
+                <td><%=r.planetMass%></td>
+            </tr>
+            <tr>
+                <td>Host Star</td>
+                <td><%=r.hostStar%></td>
+            </tr>
+            <tr>
+                <td>Planet Discovery Year</td>
+                <td><%=r.disc_year%></td>
+            </tr>
+            <tr>
+                <td>Planet Temperature</td>
+                <td><%=r.temp%></td>
+            </tr>
+            <tr>
+                <td>Planet Density</td>
+                <td><%=r.dens%></td>
+            </tr>
+            <tr>
+                <td>Angle From Earth:</td>
+            </tr>
+            <tr>
+                <td>Right Ascension</td>
+                <td><%=r.ra%></td>
+            </tr>
+            <tr>
+                <td>Declination</td>
+                <td><%=r.dec%></td>
+            </tr>
+                
+            <% }); %>
+        </table>
+        <style>
+            #body{
+                color: white;
+                position:absolute;
+                right: 500px;
+                text-align: center;
+                font-size: large;
+            }
+
+            .table{
+                border: 1px solid white;
+                width: 500px;
+                height: 200px;
+                background: linear-gradient(45deg,rgb(33, 47, 241), black, red, purple)
+            }
+            
+        </style>
+    </div>
+    <form action="/">
+        <input type="submit" value="Go to Display page"/>
+    </form>
+    
+</body>
+
+</html>

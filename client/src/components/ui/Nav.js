@@ -17,6 +17,7 @@ const Nav = ({
   let navigate = useNavigate();
 
   const [isDropdownShown, setIsDropdownShown] = useState(false);
+  const[isSW, setIsSw]=useState(false)
   return (
     <Fragment>
       <div className="nav-container">
@@ -25,7 +26,18 @@ const Nav = ({
             <img src={logo} />
           </div>
           <div className="nav-search">
-            <input className="nav-search-input" placeholder="Search" />
+
+            <form method="post" action="/search">
+            <select name="choices" id="one" >
+                <option>Exoplanets</option>
+                <option>Near Earth Asteroids</option>
+                </select>
+                
+                <input id="two"  type="text" name="second" placeholder="Object Name"></input>
+                <input type="submit" class="submit" placeholder="Search"></input>
+            </form>
+
+            {/* <input className="nav-search-input" placeholder="Search" /> */}
           </div>
           {/* <div className="nav-links">
             <ul>
