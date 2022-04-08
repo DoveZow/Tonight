@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Hero.css";
 import HeroButtons from "../HeroButtons";
 import { TodayCard } from "./Today";
+import Potd from "./potd";
 
 const Hero = ({ username, isAuthenticated, isAdmin }) => {
   let heroHeader = "";
@@ -77,14 +78,18 @@ useEffect(() => {
       <div className="hero center-content text-white">
         <div className="hero-text">
           <h2>{heroHeader}</h2>
+        </div>
           <div class="weather">
           <TodayCard cityName={cityName} visibility={visibility} cloudiness={cloudiness} iconUrl={iconUrl} sunRise={sunRise} sunSet={sunSet} description={description}/>
           </div>
-          <p>{heroP}</p>
+          {/* <p>{heroP}</p> */}
           <HeroButtons isAdmin={isAdmin} />
         </div>
+        <div className="potd">
+          <Potd/>
+        </div>
         {/* <TodayCard cityName={cityName} visibility={visibility} cloudiness={cloudiness} iconUrl={iconUrl} sunRise={sunRise} sunSet={sunSet} description={description}/> */}
-      </div>
+      
     </div>
   );
 };
